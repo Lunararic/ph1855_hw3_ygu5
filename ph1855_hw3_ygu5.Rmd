@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(agricolae)
+library(NSM3)
 library(tidyverse)
 ```
 
@@ -45,7 +46,63 @@ results
 
 # P141 Q18
 ```{r}
-allergics =    c(1651.0, 1112.0, 102)
-nonallergics = c()
+# input nonallergics (baseline) vs allergics
+X =  c(48.1, 48.0, 45.5, 41.7, 35.4, 34.3, 32.4, 29.1, 27.3, 18.9, 6.6, 5.2, 4.7)
+Y =  c(1651.0, 1112.0, 102.4, 100.0, 67.6, 65.9, 64.7, 39.6, 31.0)
+# store the difference
+n = 9
+m = 13
+diff = NULL
+
+for (i in 1:m){ 
+  for (j in 1:n){ 
+    diff = c(diff, X[i]-Y[j])
+}
+  }
+# sort the difference by increasing order
+sort(diff)[59]
+# check output from the test results
+wilcox.test(X, Y, conf.int = T)
 ```
+
+# P144 Q30
+```{r}
+X =  c(48.1, 48.0, 45.5, 41.7, 35.4, 34.3, 32.4, 29.1, 27.3, 18.9, 6.6, 5.2, 4.7)
+Y =  c(1651.0, 1112.0, 102.4, 100.0, 67.6, 65.9, 64.7, 39.6, 31.0)
+wilcox.test(X, Y, conf.int = T, conf.level = 0.95)
+```
+
+
+# P145 Q35
+```{r}
+X =  c(48.1, 48.0, 45.5, 41.7, 35.4, 34.3, 32.4, 29.1, 27.3, 18.9, 6.6, 5.2, 4.7)
+Y =  c(1651.0, 1112.0, 102.4, 100.0, 67.6, 65.9, 64.7, 39.6, 31.0)
+# store the difference
+n = 9
+m = 13
+diff = NULL
+
+for (i in 1:m){ 
+  for (j in 1:n){ 
+    diff = c(diff, X[i]-Y[j])
+}
+  }
+
+# find the number of position 29 and 89
+sort(diff)[29]
+sort(diff)[89]
+
+# compare with Q20
+wilcox.test(X, Y, conf.int = T, conf.level = 0.95)
+```
+
+# P149 Q43
+```{r}
+X =  c(48.1, 48.0, 45.5, 41.7, 35.4, 34.3, 32.4, 29.1, 27.3, 18.9, 6.6, 5.2, 4.7)
+Y =  c(1651.0, 1112.0, 102.4, 100.0, 67.6, 65.9, 64.7, 39.6, 31.0)
+
+library(NSM3)
+pFligPoli(X, Y)
+```
+
 
