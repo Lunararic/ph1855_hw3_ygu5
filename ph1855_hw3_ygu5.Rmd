@@ -1,0 +1,51 @@
+---
+title: "ph1855_hw3_ygu5"
+author: "Yue Gu"
+date: "2024-02-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(agricolae)
+library(tidyverse)
+```
+
+# Hollander et al. Nonparametric Statistical Methods-Chapter 4
+# P133 Q1
+```{r}
+qnorm(0.95) #1.645
+```
+
+# P135 Q15
+```{r}
+1-pnorm(2.27)
+```
+
+# P136 Q16
+```{r}
+# read data
+noninjured = c(.19, .14, .02, .44, .37)
+iSCI = c(.89, .76, .63, .69, .58, .79, .02, .79)
+
+wilcox.test(c(noninjured, iSCI)~factor(c(0,0,0,0,0, 1,1,1,1,1,1,1,1)))
+
+```
+
+# P136 Q17
+```{r}
+noninjured = c(.19, .14, .02, .44, .37, 0, 0, 0)
+iSCI =       c(.89, .76, .63, .69, .58, .79, .02, .79)
+
+#install.packages("agricolae")
+library(agricolae)
+results = waerden.test(iSCI, noninjured)
+results
+```
+
+# P141 Q18
+```{r}
+allergics =    c(1651.0, 1112.0, 102)
+nonallergics = c()
+```
+
