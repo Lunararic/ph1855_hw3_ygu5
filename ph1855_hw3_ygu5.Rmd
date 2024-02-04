@@ -2,7 +2,7 @@
 title: "ph1855_hw3_ygu5"
 author: "Yue Gu"
 date: "2024-02-03"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
